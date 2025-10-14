@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Portfolio — Your Name</title>
+  <meta name="description" content="Professional website with research objectives, motivation, corpora, leaderboard, consortium members, publications, career, Downloads and contact details." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+     :root {
+      --bg: #ffffff;         /* white background */
+      --panel: #f8f8f8;      /* light gray for cards */
+      --text: #e34c0d;       /* dark gray for text */
+      --muted: #201c1c;    /* muted gray for secondary text */
+      --brand: #FF8C00;      /* dark orange */
+      --brand-2: #FF4500;    /* secondary orange */
+      --ring: rgba(255, 140, 0, .3);
+      --border: rgba(0, 0, 0, 0.1);
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --container: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(108,156,255,.15), transparent 60%),
+                  radial-gradient(900px 500px at 0% 0%, rgba(124,231,172,.12), transparent 60%),
+                  var(--bg);
+      line-height: 1.6;
+    }
+
+    /* Layout */
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 80px; }
+    section { padding: 80px 0; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+
+    /* Navbar */
+    .nav {
+      position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(11,16,33,.85), rgba(11,16,33,.6));
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 16px; 
+      padding: 18px 0; /* bigger navbar height */
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    .brand-logo { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 8px 24px rgba(108,156,255,.35); }
+    .brand-name { font-weight: 700; letter-spacing: .3px; font-size: 22px; }
+
+    .nav-links { display: flex; flex-wrap: wrap; gap: 0px; }
+    .nav-links a {
+      text-decoration: none; 
+      color: var(--muted); 
+      font-weight: 600; 
+      font-size: 16px;   /* bigger font */
+      padding: 16px 18px; /* bigger clickle area */
+      border-radius: 12px;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: rgba(255,255,255,.06); }
+
+    .menu-btn { display: none; background: transparent; border: 1px solid var(--border); color: var(--text); padding: 12px 14px; border-radius: 12px; font-size: 16px; }
+
+    @media (max-width: 980px) {
+      .nav-inner { flex-wrap: wrap; }
+      .menu-btn { display: inline-flex; align-items: center; gap: 8px; }
+      .nav-links { display: none; width: 100%; padding-top: 10px; }
+      .nav-links.open { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    /* Hero */
+    .hero { padding: 90px 0 70px; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 26px; }
+    .hero h1 { font-size: clamp(28px, 4vw, 48px); line-height: 1.15; margin: 0 0 12px; }
+    .hero p { color: var(--muted); font-size: clamp(16px, 1.5vw, 18px); margin: 0 0 24px; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600;
+      padding: 12px 16px; border-radius: 14px; border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      color: var(--text);
+    }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); border: none; color: #071220; box-shadow: 0 12px 30px var(--ring); }
+
+    .hero-card { padding: 18px; display: grid; gap: 12px; }
+    .stat { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; background: rgba(255,255,255,.03); padding: 12px; border-radius: 12px; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Section headers */
+    .section-head { margin-bottom: 26px; }
+    .eyebrow { color: var(--brand-2); font-weight: 700; text-transform: uppercase; letter-spacing: .12em; font-size: 12px; }
+    .h2 { font-size: clamp(22px, 3.2vw, 34px); margin: 8px 0 6px; }
+    .lead { color: var(--muted); }
+
+    /* Cards & grids */
+    .grid { display: grid; gap: 16px; }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 980px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 720px) { .grid-3, .grid-2, .grid-4 { grid-template-columns: 1fr; } }
+
+    .chip { display: inline-flex; gap: 8px; align-items: center; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 600; }
+    tr:hover td { background: rgba(255,255,255,.03); }
+
+    /* Lists */
+    .list { margin: 0; padding: 0 0 0 18px; color: var(--muted); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 26px 0 50px; color: var(--muted); }
+
+    /* Forms */
+    .input, textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,.04); color: var(--text); outline: none; }
+    .input:focus, textarea:focus { border-color: var(--brand-2); box-shadow: 0 0 0 4px var(--ring); }
+    label { font-size: 14px; color: var(--muted); }
+
+    /* ✅ Override: make layout full width */
+    .container {
+      max-width: 100% !important;
+      padding: 1 60px; /* adjust spacing, set 0 for true edge-to-edge */
+    }
+
+    /* Logo carousel */
+.logo-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  height: 120px;       /* ⬅️ Increase container height */
+  display: flex;
+  align-items: center; /* ⬅️ Vertically center logos */
+}
+
+.logo-track {
+  display: flex;
+  animation: scroll-right 25s linear infinite;
+}
+
+/* Pause the animation on hover */
+.logo-slider:hover .logo-track {
+  animation-play-state: paused;
+}
+
+.logo-track img {
+  height: 80px;  /* smaller logo size */
+  width: auto;
+  margin: 0 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.logo-track img:hover {
+  transform: scale(1.2);
+  box-shadow: 0 15px 20px rgba(235, 87, 28, 0.25);
+}
+
+/* Animation for moving right */
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 per row */
+  gap: 30px; /* spacing between items */
+  text-align: center;
+  margin: 30px auto;
+  max-width: 1200px;  /* keeps it centered */
+  justify-items: center; /* center items inside cells */
+}
+
+
+
+/* Profile photo wrapper */
+.staff-photo {
+  position: relative;
+  display: inline-block;
+}
+
+.staff img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* circle photo */
+  object-fit: cover;
+  /*margin-bottom: 10px;
+  box-shadow: none;  /* no outline */
+  border: none;      /* no border */
+}
+
+/* White box wrapper */
+.staff-photo a {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: white;
+  border-radius: 4px;
+  padding: 3px;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  text-decoration: none;
+  
+  /*border-radius: 4px;   /* small rounded square (or 0 for sharp square) */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* LinkedIn icon inside box */
+.staff-photo a img {
+  width: 18px;
+  height: 18px;
+  display: block;
+  border-radius: 0;
+}
+
+
+.staff h3 {
+  margin: 6px 0 2px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.staff p {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Responsive: 1 column on small screens */
+@media (max-width: 768px) {
+  .staff-grid {
+    grid-template-columns: 1fr;
+  }
+}
+  </style>
+</head>
+<body>
+
+  
+  <!--HTML CODE BEGIN-->
+
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="container nav-inner">
+  
+      <!-- ✅ Logo only -->
+      <a href="#home" class="brand" aria-label="Homepage">
+        <img src="/images/MAHE_logo.jpg" alt="MIT Logo" 
+             style="width:150px; height:2000px; height:auto; margin-left:80px; object-fit:contain;">
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+      <div class="nav-links" id="navLinks" role="navigation" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#objective">Objective</a>
+        <!--<a href="#motivation">Motivation</a>-->
+        <!--<a href="#corpora">Corpora</a>-->
+        <a href="#Our Team">Our Team</a>
+        <!--<a href="#Project Staff">Project Staff</a>-->
+        <a href="#publications">Publications</a>
+        <a href="#career">Career</a>
+        <a href="#Downloads">Downloads</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- HERO / HOME -->
+<header id="home" class="hero">
+  <div class="container hero-grid">
+    <div>
+      <!--<span class="chip">Open Research • Industry Collaboration</span>-->
+      <!--<h1>COIL-D</h1>
+      <h2>Centre of Indian Language Data</h2>-->
+      
+      <!-- Logo aligned left -->
+      <div style="display: flex; align-items: center; justify-content: flex-start;"> <!--This to adjust coild logo position-->
+        <div style="margin-right: 20px;">
+          <img src="/images/COIL-Dlogo-mit.png" alt="COIL-D Logo" style="width: 500px; height: auto;">
+        </div>
+      </div>
+
+      <p>
+        Fostering innovation in Human Language Technology by creating a unified repository of Indian language data.
+        <br><br>
+        Under BHASHINI, Funded by Ministry of Electronics and Information Technology (MeitY), Govt. of India
+      </p>
+
+      <div class="cta-row">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <!--<a class="btn" href="#publications">View publications</a>-->
+      </div>
+    </div>
+    <!--<div class="card hero-card"></div>-->
+  </div>
+</header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <!--<div class="eyebrow">About</div>-->
+        <h2 class="h2">About Us</h2>
+        <!--<p class="lead">The Mission Bhashini, an initiative by the Ministry of Electronics and Information Technology (MeitY), Government of India, has recently recognized and funded the establishment of the "COIL-D: Centre of Indian Language Data." This esteemed project is being led by Prof. Asif Ekbal, Associate Professor at IIT Patna, in collaboration with IIT Delhi, IIIT Delhi, IIT Guwahati, IGDTUW, MIT Manipal, and DIBD. MIT is responsible for developing parallel corpora for Dravidian languages Kannada, Tamil, Malayalam, and Telugu.</p>-->
+        <p class="lead"> "COIL-D: Centre of Indian Language Data" is a funded project from the Ministry of Electronics and Information Technology (MeitY), Govt. of India. The project is to be executed in consortium mode led by IIT Patna. The other partnering institutions are IIT Delhi, IIIT Guwahati, IIIT Delhi, IGDTUW, Digital India Bhashini Division DIC and MIT Manipal. The project seeks to develop language resources for Human Language Technology (HLT) and establish applications, standards, guidelines, and best practices for building and benchmarking Machine Translation (MT) systems and other NLP tools. MIT is responsible for developing parallel corpora for Dravidian languages Kannada, Tamil, Malayalam, and Telugu.</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card" style="padding:18px;">
+          <h3>Aims</h3>
+          <ul class="list">
+            Develop a suite of language resources, including parallel corpora for machine translation between Indian languages and benchmark datasets for key NLP tasks like Part-of-Speech (PoS) tagging, Named Entity Recognition (NER), Automatic Speech Recognition (ASR), and Text-to-Speech (TTS).
+          </ul>
+        </div>
+        <div class="card" style="padding:20px;">
+          <h3>Primary Focus</h3>
+          <ul class="list">
+            50% domain-specific content from a mix of sectors: science, healthcare, agriculture, climate, tourism, and judiciary. 30% educational content, focusing on academic materials, textbooks, and learning resources. 20% conversational and governance content, including social media, dialogues, and official documents.
+            
+          </ul>
+        </div>
+        <div class="card" style="padding:18px;">
+          <h3>Key Focus</h3>
+          <ul class="list">
+            Standardize, preserve, and create language resources to support NLP research and applications.
+          </ul>
+        </div>
+        <div class="card" style="padding:18px;">
+          <h3>Applications</h3>
+          <ul class="list">
+            This dataset will provide translation between Tamil and Kannada, Malayalam, Telugu and it will also enable the development of multilingual chatbots. This will facilitate more effective cross-sector communication.
+          
+          </ul>
+        </div>
+        <div class="card" style="padding:18px;">
+          <h3>Intiative</h3>
+          <ul class="list">
+            Establish a centralized repository for Indian language data and provide a platform for developing and benchmarking Human Language Technology (HLT) applications.
+          
+          </ul>
+        </div>
+        <div class="card" style="padding:18px;">
+          <h3>Results</h3>
+          <ul class="list">
+            To ensure rapid and efficient translation, the final output requires minimal post-editing, making it immediately suitable for publication on print and digital platforms.
+      
+          </ul>
+        </div>
+        <div class="card" style="padding:18px;">
+          <h3>Development</h3>
+          <ul class="list">
+            Create comprehensive leaderboards to systematically evaluate the performance of models in key Natural Language Processing (NLP) tasks. These leaderboards will serve as benchmarks for assessing machine translation (MT), Part-of-Speech (PoS) tagging, Named Entity Recognition (NER), Natural Language Generation (NLG), sentiment analysis, Automatic Speech Recognition (ASR), and Text-to-Speech (TTS).
+    
+        </div>
+        <div class="card" style="padding:18px;">
+          <h3>Delivery</h3>
+          <ul class="list">
+            These advanced, no-cost tools offer a superior alternative to existing solutions like Google Translate, while simultaneously contributing to the preservation and growth of our linguistic heritage.
+            
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top: 20px;">
+        <!--As a data partner, your organization will be acknowledged on the MeitY portal for its valuable contributions to this important national project. Upon completion, due credit will be given for your support, highlighting your role in this significant initiative.-->
+      </p>
+    </div>
+  </section>
+
+  <!-- OBJECTIVE -->
+  <section id="objective">
+    <div class="container">
+      <div class="section-head">
+        <!--<div class="eyebrow">Objective</div>-->
+        <h2 class="h2">Our primary objectives</h2>
+        <p class="lead">The COIL-D (Centre of Indian Language Data) project is building a single, comprehensive hub for Indian language data. Its main goals are to set up a standardized platform to evaluate machine translation and other natural language processing systems, encourage the development and preservation of language resources for human language technology applications, and define benchmarks for linguistic performance.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card" style="padding:18px;">
+          <h3>Step 1: Identification of Tamil language resources</h3>
+          <ul class="list">
+           Identify and list existing Tamil datasets and tools to understand the current resource availability.</ul>
+        </div>
+        <div class="card" style="padding:18px;">
+          <h3> Step 2: Acquisition of resources across target domains </h3>
+           <ul class="list">
+          To ensure comprehensive coverage of real-world language usage, data will be collected from key domains, including Education, Governance & Policy, Judiciary, Science & Technology, Healthcare, Agriculture, Climate, and Tourism.</ul> 
+        </div>
+        <div class="card" style="padding:18px;">
+          <h3> Step 3: Creation of language resources and benchmarks </h3>
+          <ul class="list">
+           Develop language resources and datasets for Machine Translation and NLP, and establish benchmarks to systematically evaluate tool performance.</ul> 
+          </div>
+        <div class="card" style="padding:18px;">
+          <h3> Step 4: Development of MT evaluation leaderboards </h3>
+          <ul class="list">
+          Develop MT evaluation leaderboards to assess translation systems, enabling performance tracking and fostering continuous improvement. </ul>
+          </div>
+        <div class="card" style="padding:18px;">
+          <h3> Step 5: Leaderboards for ASR and TTS technologies </h3>
+          <ul class="list">
+          Develop evaluation scoreboards for speech recognition and synthesis systems to measure accuracy, clarity, and overall performance. </ul> 
+          </div>
+        <div class="card" style="padding:18px;">
+          <h3> Step 6: Benchmarks for PoS and NER taggers </h3>
+          <ul class="list">
+          Define evaluation protocols for tools such as PoS and NER taggers to ensure fair and consistent assessment. </ul>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOTIVATION -->
+  <!--<section id="motivation">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Motivation</div>
+        <h2 class="h2">Why this matters</h2>
+        <p class="lead">Language equity unlocks access to education, public services, and economic opportunity for millions.</p>
+      </div>
+      <div class="card" style="padding:18px;">
+        <p>Despite rapid progress in AI, many Indian lahttps://prod.liveshare.vsengsaas.visualstudio.com/join?BFD8E04F806CEB61C3910FD18C1788A03510nguages remain under-represented in datasets and benchmarks. We aim to bridge this gap by creating inclusive resources and evaluation suites that reflect real-world use cases.</p>
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+          <span class="chip">⚖️ Responsible AI</span>
+          <span class="chip">🗣️ Multilingual</span>
+          <span class="chip">🧪 Reproducible</span>
+          <span class="chip">🔓 Open Access</span>
+        </div>
+      </div>
+    </div>
+  </section>-->
+
+  <!-- CORPORA -->
+  <!--<section id="corpora">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Corpora</div>
+        <h2 class="h2">Datasets</h2>
+        <p class="lead">A snapshot of available resources. Replace placeholders with your own dataset links.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card" style="padding:18px;">
+          <h3>IndicNews-22</h3>
+          <p class="lead">2.4M articles • 11 languages</p>
+          <p>License: CC BY 4.0</p>
+          <a class="btn" href="#" aria-label="Download IndicNews dataset">Download</a>
+        </div>
+        <div class="card" style="padding:18px;">
+          <h3>EduSpeech-KA</h3>
+          <p class="lead">1,200 hrs speech • Kannada</p>
+          <p>License: CC BY-NC 4.0</p>
+          <a class="btn" href="#" aria-label="Download EduSpeech dataset">Download</a>
+        </div>
+        <div class="card" style="padding:18px;">
+          <h3>GovDocs-TA</h3>
+          <p class="lead">350k docs • Tamil</p>
+          <p>License: ODC-BY</p>
+          <a class="btn" href="#" aria-label="Download GovDocs dataset">Download</a>
+        </div>
+      </div>
+    </div>
+  </section>-->
+
+  <!-- LEADERBOARD -->
+  <!--<section id="leaderboard">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Leaderboard</div>
+        <h2 class="h2">Benchmark results</h2>
+        <p class="lead">Add your tasks and live scores. You can replace this table or integrate a static JSON later.</p>
+      </div>
+      <div class="card" style="padding:6px; overflow:auto;">
+        <table aria-describedby="leaderboard-desc">
+          <caption id="leaderboard-desc" style="text-align:left; padding:12px; color:var(--muted);">Top-5 systems per task (example placeholders)</caption>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Dataset</th>
+              <th>Model / Team</th>
+              <th>Metric</th>
+              <th>Score</th>
+              <th>Paper / Code</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ASR (KA)</td>
+              <td>EduSpeech-KA</td>
+              <td>Conformer-Large (Team A)</td>
+              <td>WER ↓</td>
+              <td>6.3%</td>
+              <td><a href="#">paper</a> · <a href="#">code</a></td>
+            </tr>
+            <tr>
+              <td>NMT (TA↔EN)</td>
+              <td>GovDocs-TA</td>
+              <td>mBART50 (Team B)</td>
+              <td>BLEU ↑</td>
+              <td>31.2</td>
+              <td><a href="#">paper</a> · <a href="#">code</a></td>
+            </tr>
+            <tr>
+              <td>NER (HI)</td>
+              <td>IndicNews-22</td>
+              <td>DeBERTa-V3 (Team C)</td>
+              <td>F1 ↑</td>
+              <td>88.5</td>
+              <td><a href="#">paper</a> · <a href="#">code</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>-->
+  
+<!---------------------------------------------------------------------->
+
+
+<!-- Leadership -->
+  <section id="Our Team">
+    <div class="container">
+      <div class="section-head">
+        <!--<div class="eyebrow">Project Investigators</div>-->
+        <h2 class="h2">Leadership</h2>
+        <!--<p class="lead">Showcase collaborators. Replace logos and links below.</p>-->
+      </div>
+      <div class="grid grid-4">
+        
+        <!-- Member 1 -->
+        <div class="card" style="padding:16px; text-align:center;">
+          <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/muralikrishna-sn/_jcr_content.html" target="_blank">
+            <img src="/images/anil.jpg" alt="Member Photo" 
+                 style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
+          </a>
+          <h3 style="margin:8px 0 4px;">Commander(Dr) Anil Rana</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Director</p>
+          <p style="margin:0; font-size:14px; color:#666;">Manipal Institute of Technology</p>
+          <p style="margin:0; font-size:14px; color:#666;">MAHE, Manipal, India</p>
+        
+          <!-- ✅ Icons wrapped in flex container -->
+          <!--<div style="margin-top:8px; display:inline-flex; gap:12px;">
+            <a href="--" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" 
+                   alt="Google Scholar" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+            <a href="---" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" 
+                   alt="LinkedIn" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+          </div>-->
+        </div>
+        
+
+<!---------------------------------------------------------------------->
+         <!-- Member 2 -->
+        <div class="card" style="padding:16px; text-align:center;">
+          <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/raghurama-holla/_jcr_content.html" target="_blank">
+            <img src="/images/radhika.jpg" alt="Member Photo" 
+                 style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
+          </a>
+          <h3 style="margin:8px 0 4px;">Dr. Radhika M Pai</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Dean and Professor</p>
+          <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
+          <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
+        
+          <!-- ✅ Icons inside flexbox container -->
+          <!-- ✅ Icons wrapped in flex container -->
+          <!--<div style="margin-top:8px; display:inline-flex; gap:12px;">
+            <a href="--" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" 
+                   alt="Google Scholar" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+            <a href="---" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" 
+                   alt="LinkedIn" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+          </div>-->
+        </div>
+
+        <!---------------------------------------------------------------------->
+         <!-- Member 3 -->
+        <div class="card" style="padding:16px; text-align:center;">
+          <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/raghurama-holla/_jcr_content.html" target="_blank">
+            <img src="/images/siddalingaswamy.jpg" alt="Member Photo" 
+                 style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
+          </a>
+          <h3 style="margin:8px 0 4px;">Dr. P C Siddalingaswamy</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Professor and Associate Dean</p>
+          <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
+          <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
+        
+          <!-- ✅ Icons inside flexbox container -->
+          <!-- ✅ Icons wrapped in flex container -->
+          <!--<div style="margin-top:8px; display:inline-flex; gap:12px;">
+            <a href="--" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" 
+                   alt="Google Scholar" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+            <a href="---" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" 
+                   alt="LinkedIn" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+          </div>-->
+        </div>
+
+        <!---------------------------------------------------------------------->
+         <!-- Member 4 -->
+        <div class="card" style="padding:16px; text-align:center;">
+          <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/raghurama-holla/_jcr_content.html" target="_blank">
+            <img src="/images/smitha.jpg" alt="Member Photo" 
+                 style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
+          </a>
+          <h3 style="margin:8px 0 4px;">Dr. Smitha N Pai</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Professor and Associate Dean</p>
+          <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
+          <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
+        
+          <!-- ✅ Icons inside flexbox container -->
+          <!-- ✅ Icons wrapped in flex container -->
+          <!--<div style="margin-top:8px; display:inline-flex; gap:12px;">
+            <a href="--" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" 
+                   alt="Google Scholar" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+            <a href="---" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" 
+                   alt="LinkedIn" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+          </div>-->
+        </div>
+      </div>
+    </div>  
+  </section>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  <!-- Project Investigators -->
+  <section id="Our Team">
+    <div class="container">
+      <div class="section-head">
+        <!--<div class="eyebrow">Project Investigators</div>-->
+        <h2 class="h2">Project Investigators</h2>
+        <!--<p class="lead">Showcase collaborators. Replace logos and links below.</p>-->
+      </div>
+      <div class="grid grid-3">
+        
+        <!-- Member 1 -->
+        <div class="card" style="padding:16px; text-align:center;">
+          <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/muralikrishna-sn/_jcr_content.html" target="_blank">
+            <img src="/images/11.jpg" alt="Member Photo" 
+                 style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
+          </a>
+          <h3 style="margin:8px 0 4px;">Dr. Muralikrishna SN</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Associate Professor</p>
+          <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
+          <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
+        
+          <!-- ✅ Icons wrapped in flex container -->
+          <div style="margin-top:8px; display:inline-flex; gap:12px;">
+            <a href="https://scholar.google.com/citations?user=CRP1To4AAAAJ&hl=en" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" 
+                   alt="Google Scholar" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+            <a href="https://www.linkedin.com/in/muralikrishna-sn/?originalSubdomain=in" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" 
+                   alt="LinkedIn" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+          </div>
+        </div>
+        
+
+<!---------------------------------------------------------------------->
+         <!-- Member 2 -->
+         <div class="card" style="padding:16px; text-align:center;">
+          <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/ashalatha-nayak.html" target="_blank">
+            <img src="/images/22.jpg" alt="Member Photo" 
+                 style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
+          </a>
+          <h3 style="margin:8px 0 4px;">Dr. Ashalatha Nayak</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Professor</p>
+          <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
+          <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
+        
+          <!-- ✅ Icons inside flexbox container -->
+          <div style="margin-top:8px; display:inline-flex; gap:12px;">
+            <a href="https://scholar.google.com/citations?user=QTphu14AAAAJ&hl=en" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" 
+                   alt="Google Scholar" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+            <a href="https://www.linkedin.com/in/ashalatha-nayak-7a24504a/" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" 
+                   alt="LinkedIn" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+          </div>
+        </div>
+
+        <!---------------------------------------------------------------------->
+
+        <!-- Member 3 -->
+        <div class="card" style="padding:16px; text-align:center;">
+          <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/ashwath-rao/_jcr_content.html" target="_blank">
+            <img src="/images/33.jpg" alt="Member Photo" 
+                 style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
+          </a>
+          <h3 style="margin:8px 0 4px;">Dr. Ashwath Rao B</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Assistant Professor - Selection Grade</p>
+          <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
+          <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
+        
+          <!-- ✅ Icons inside flexbox container -->
+          <div style="margin-top:8px; display:inline-flex; gap:12px;">
+            <a href="https://scholar.google.com/citations?user=bJA8hZQAAAAJ&hl=en" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" 
+                   alt="Google Scholar" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+            <a href="https://www.linkedin.com/in/dr-ashwath-rao-b-09774418/?originalSubdomain=in" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" 
+                   alt="LinkedIn" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+          </div>
+        </div>
+
+        <!---------------------------------------------------------------------->
+
+        <!-- Member 4 -->
+        <div class="card" style="padding:16px; text-align:center;">
+          <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/raghavendra-ganiga/_jcr_content.html" target="_blank">
+            <img src="/images/44.jpg" alt="Member Photo" 
+                 style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
+          </a>
+          <h3 style="margin:8px 0 4px;">Dr. Raghavendra Ganiga</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Associate Professor</p>
+          <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
+          <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
+        
+          <!-- ✅ Icons inside flexbox container -->
+          <div style="margin-top:8px; display:inline-flex; gap:12px;">
+            <a href="https://scholar.google.com/citations?user=8jdkvp4AAAAJ&hl=en" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" 
+                   alt="Google Scholar" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+            <a href="https://www.linkedin.com/in/raghavendra-ganiga-42460669/" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" 
+                   alt="LinkedIn" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+          </div>
+        </div>
+
+        <!---------------------------------------------------------------------->
+
+         <!-- Member 5 -->
+         <div class="card" style="padding:16px; text-align:center;">
+          <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/ganesh-babu-c/_jcr_content.html" target="_blank">
+          <img src="/images/55.jpg" alt="Member Photo" 
+               style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
+          </a>
+          <h3 style="margin:8px 0 4px;">Mr. Ganesh Babu C</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Assistant Professor Senior Scale</p>
+          <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
+          <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
+        
+          <!-- ✅ Google Scholar Icon
+          <a href="#" target="_blank" style="margin-right:12px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" 
+                 alt="Google Scholar" 
+                 style="width:22px; height:22px; vertical-align:middle;">
+          </a>-->
+        
+          <!-- ✅ LinkedIn Icon -->
+          <a href="https://www.linkedin.com/in/gbyourss/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" 
+                 alt="LinkedIn" 
+                 style="width:22px; height:22px; vertical-align:middle;">
+          </a>
+        </div>
+
+        <!---------------------------------------------------------------------->
+        <!-- Member 6 -->
+        <div class="card" style="padding:16px; text-align:center;">
+          <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/raghurama-holla/_jcr_content.html" target="_blank">
+            <img src="/images/66.jpg" alt="Member Photo" 
+                 style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
+          </a>
+          <h3 style="margin:8px 0 4px;">Dr. Raghurama Holla</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Assistant Professor</p>
+          <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
+          <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
+        
+          <!-- ✅ Icons inside flexbox container -->
+          <div style="margin-top:8px; display:inline-flex; gap:12px;">
+            <a href="https://scholar.google.com/citations?user=GtSpk8QAAAAJ&hl=en" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" 
+                   alt="Google Scholar" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+            <a href="https://www.linkedin.com/in/raghurama-holla-524a31a1/" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" 
+                   alt="LinkedIn" 
+                   style="width:22px; height:22px; vertical-align:middle;">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </section>
+  <section id="staffs">
+    <h2 class="h2" style="text-align:center;">Project Staffs</h2>
+  
+    <div class="staff-grid">
+      <div class="staff">
+        <div class="staff-photo">
+          <img src="/images/niveditha.jpg" alt="Staff Photo">
+          <a href="https://www.linkedin.com/in/niveditha-ambalpady-280b1b379/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                 alt="LinkedIn">
+          </a>
+        </div>
+        <h3>Ms. Niveditha</h3>
+        <p>Liaison Officer</p>
+      </div>
+
+      <div class="staff">
+        <div class="staff-photo">
+          <img src="/images/Harsha.jpg" alt="Staff 2">
+          <a href="https://www.linkedin.com/in/payyavula-venkata-sai-sriharshavardhan-chowdary-6b17151ba/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                 alt="LinkedIn">
+          </a>
+        </div>
+        <h3>Mr. PVSS Harshavardhan</h3>
+        <p>Junior Research Associate</p>
+      </div>
+
+      <div class="staff">
+        <div class="staff-photo">
+          <img src="/images/deeksha.jpg" alt="Staff 3">
+          <a href="https://www.linkedin.com/in/deeksha-809987227/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                 alt="LinkedIn">
+          </a>
+        </div>
+        <h3>Ms. Deeksha</h3>
+        <p>Junior Research Associate</p>
+      </div>
+
+      <div class="staff">
+        <div class="staff-photo">
+          <img src="/images/shruthi.jpeg" alt="Staff 4">
+          <a href="https://www.linkedin.com/in/shruthi-3249b234a/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                 alt="LinkedIn">
+          </a>
+        </div>
+        <h3>Ms. Shruthi</h3>
+        <p>Junior Research Associate</p>
+      </div>
+
+      <div class="staff">
+        <div class="staff-photo">
+          <img src="/images/sona.jpg" alt="Staff 5">
+          <a href="https://www.linkedin.com/in/sona-t-a58258249/?trk=people-guest_people_search-card&originalSubdomain=in" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                 alt="LinkedIn">
+          </a>
+        </div>
+        <h3>Ms. Sona T</h3>
+        <p>Junior Research Associate</p>
+      </div>
+
+      <div class="staff">
+        <div class="staff-photo">
+          <img src="/images/shama.png" alt="Staff 6">
+          <a href="https://www.linkedin.com/in/shama-bhat/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                 alt="LinkedIn">
+          </a>
+        </div>
+        <h3>Ms. Shama Bhat</h3>
+        <p>Junior Research Associate</p>
+      </div>
+
+      <div class="staff">
+        <div class="staff-photo">
+          <img src="/images/shrilatha.jpg" alt="Staff 7">
+          <a href="https://www.linkedin.com/in/shrilatha-k-9808224a/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                 alt="LinkedIn">
+          </a>
+        </div>
+        <h3>Ms. Shrilatha Kulal</h3>
+        <p>Junior Research Associate</p>
+      </div>
+
+      <div class="staff">
+        <div class="staff-photo">
+          <img src="/images/raksha.jpg" alt="Staff 8">
+          <a href="https://www.linkedin.com/in/raksha-shetty-4485a21b5/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                 alt="LinkedIn">
+          </a>
+        </div>
+        <h3>Ms. Raksha</h3>
+        <p>Junior Research Associate</p>
+      </div>
+      <div class="staff">
+        <div class="staff-photo">
+          <img src="/images/umalatha.jpeg" alt="Staff 8">
+          <a href="https://www.linkedin.com/in/dr-umalatha-kannoth-519aa1189?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                 alt="LinkedIn">
+          </a>
+        </div>
+        <h3>Dr. Umalatha Kannoth</h3>
+        <p>Junior Research Associate</p>
+      </div>
+
+      <div class="staff">
+        <div class="staff-photo">
+          <img src="/images/kavya.jpg" alt="Staff 9">
+          <a href="https://www.linkedin.com/in/s-a-kavya-b3b239215/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                   alt="LinkedIn">
+          </a>
+        </div>
+        <h3>Ms. Kavya</h3>
+        <p>Former Junior Research Associate</p>
+      </div>
+    </div>
+  </section>
+  
+        
+  <!-- PUBLICATIONS -->
+  <!--<section id="publications">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Publications</div>
+        <h2 class="h2">Selected papers</h2>
+        <p class="lead">Replace with your actual citations (IEEE/ACM/ACL style).</p>
+      </div>
+      <div class="card" style="padding:18px;">
+        <ol class="list">
+          <li><strong>Your Name</strong>, Coauthors (2025). <em>Title of the Paper</em>. Conference/Journal. <a href="#">PDF</a> · <a href="#">Code</a> · <a href="#">Dataset</a></li>
+          <li>Author A, <strong>Your Name</strong> (2024). <em>Another Work</em>. Venue. <a href="#">PDF</a></li>
+          <li>Your Group (2023). <em>Benchmarking Indic NER</em>. Venue. <a href="#">PDF</a></li>
+        </ol>
+      </div>
+    </div>
+  </section>-->
+
+  <!-- CAREER -->
+  <section id="career">
+    <div class="container">
+      <div class="section-head">
+        <!--<div class="eyebrow">Career</div>-->
+        <h2 class="h2">Open positions</h2>
+        <!--<p class="lead">List internships, full‑time roles, and collaborations.</p>-->
+      </div>
+      <div class="grid grid-2">
+        <div class="card" style="padding:18px;">
+          <h3>Junior Research Associate (Language)</h3>
+          <p class="lead">Posts: 01 • Salary: Rs. 45,000/month (with 10% annual increment) • Duration: 2 Years</p>
+          <ul class="list">
+            <h Style="font-size: 20px;">Eligibility</h> 
+             <li>M.A in Tamil Linguistics or equivalent degree</li>
+             <li>Basic knowledge of Windows/Linux Operating Systems, Basic AI tools, MS Office</li>
+             <li>Multi-lingual skills are desirable</li>
+             <h Style="font-size: 20px;">Key responsibilities</h>
+             <li>Utilize annotation tools and software platforms commonly used in corpus development</li>
+             <li>Review and evaluate the quality of annotations, identifying and correcting errors or areas for improvement</li>
+             <li>Apply basic knowledge of markup languages, such as XML, and adhere to annotation standards</li>
+          </ul>
+        <a class="btn primary" href="mailto:coild.mit@manipal.edu?subject=Application%20for%20Junior%20Research%20Associate%20(Tamil)%20-%20[Your%20Name]&body=Dear%20Sir/Madam,%0A%0AI%20am%20writing%20to%20apply%20for%20the%20position%20of%20Junior%20Research%20Associate%20in%20Tamil%20Linguistics.%0A%0A[Your%20message%20here...]%0A%0A**Please%20attach%20your%20resume%20to%20this%20email.**%0A%0ASincerely,%0A[Your%20Name]">Apply</a>        
+      </div>
+        <!--<div class="card" style="padding:18px;">
+          <h3>Engineer — ML</h3>
+          <p class="lead">Full‑time • Bengaluru</p>
+          <ul class="list">
+            <li>Model deployment & MLOps</li>
+            <li>Dataset tooling</li>
+            <li>Monitoring & observability</li>
+          </ul>
+          <a class="btn" href="#contact">Apply</a>
+        </div>-->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Partner Institutions Logos -->
+<section id="">
+  <div class="container">
+    <div class="section-head">
+      <!--<div class="eyebrow"></div>-->
+      <h2 class="h2">Collaborating Institutions</h2>
+    </div>
+
+    <!-- Logos carousel -->
+    <div class="logo-slider">
+      <div class="logo-track">
+        <!-- Repeat logos -->
+        <a href="https://www.iitp.ac.in/" target="_blank">
+          <img src="/images/patna.jpg" alt="Institution 1" />
+        </a>
+        <a href="https://home.iitd.ac.in/" target="_blank">
+          <img src="/images/iitdelhi.jpg" alt="Institution 2" />
+        </a>
+        <a href="https://www.iitg.ac.in/" target="_blank"> 
+          <img src="/images/guwahati.jpg" alt="Institution 3" />
+        </a>
+        <a href="https://www.manipal.edu/mit.html" target="_blank">
+          <img src="/images/mahe.jpg" alt="Institution 4" />
+        </a>
+        <a href="https://www.iiitd.ac.in/" target="_blank">
+          <img src="/images/iiitdelhi.jpg" alt="Institution 5" />
+        </a>
+        <a href="https://www.igdtuw.ac.in/" target="_blank"> 
+          <img src="/images/igtuw.jpg" alt="Institution 6" />
+        </a>
+        <a href="https://bhashini.gov.in/" target="_blank">
+          <img src="/images/bashini.jpg" alt="Institution 7" />
+        </a>
+        <!-- Duplicate set for infinite loop effect -->
+        <a href="https://www.iitp.ac.in/" target="_blank">
+          <img src="/images/patna.jpg" alt="Institution 1" />
+        </a>
+        <a href="https://home.iitd.ac.in/" target="_blank">
+          <img src="/images/iitdelhi.jpg" alt="Institution 2" />
+        </a>
+        <a href="https://www.iitg.ac.in/" target="_blank"> 
+          <img src="/images/guwahati.jpg" alt="Institution 3" />
+        </a>
+        <a href="https://www.manipal.edu/mit.html" target="_blank">
+          <img src="/images/mahe.jpg" alt="Institution 4" />
+        </a>
+        <a href="https://www.iiitd.ac.in/" target="_blank">
+          <img src="/images/iiitdelhi.jpg" alt="Institution 5" />
+        </a>
+        <a href="https://www.igdtuw.ac.in/" target="_blank"> 
+          <img src="/images/igtuw.jpg" alt="Institution 6" />
+        </a>
+        <a href="https://bhashini.gov.in/" target="_blank">
+          <img src="/images/bashini.jpg" alt="Institution 7" />
+        </a>
+        <!-- Duplicate set for infinite loop effect -->
+        <a href="https://www.iitp.ac.in/" target="_blank">
+          <img src="/images/patna.jpg" alt="Institution 1" />
+        </a>
+        <a href="https://home.iitd.ac.in/" target="_blank">
+          <img src="/images/iitdelhi.jpg" alt="Institution 2" />
+        </a>
+        <a href="https://www.iitg.ac.in/" target="_blank"> 
+          <img src="/images/guwahati.jpg" alt="Institution 3" />
+        </a>
+        <a href="https://www.manipal.edu/mit.html" target="_blank">
+          <img src="/images/mahe.jpg" alt="Institution 4" />
+        </a>
+        <a href="https://www.iiitd.ac.in/" target="_blank">
+          <img src="/images/iiitdelhi.jpg" alt="Institution 5" />
+        </a>
+        <a href="https://www.igdtuw.ac.in/" target="_blank"> 
+          <img src="/images/igtuw.jpg" alt="Institution 6" />
+        </a>
+        <a href="https://bhashini.gov.in/" target="_blank">
+          <img src="/images/bashini.jpg" alt="Institution 7" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+   <!-- Downloads 
+  <section id="Downloads">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Career</div>
+        <h2 class="h2">Open positions</h2>
+        <p class="lead">List internships, full‑time roles, and collaborations.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card" style="padding:18px;">
+          <h3>Research Intern (NLP)</h3>
+          <p class="lead">3–6 months • Remote/Onsite</p>
+          <ul class="list">
+            <li>Data curation for Indic ASR</li>
+            <li>Baseline model training</li>
+            <li>Evaluation & reporting</li>
+          </ul>
+          <a class="btn" href="#contact">Apply</a>
+        </div>
+        <div class="card" style="padding:18px;">
+          <h3>Engineer — ML</h3>
+          <p class="lead">Full‑time • Bengaluru</p>
+          <ul class="list">
+            <li>Model deployment & MLOps</li>
+            <li>Dataset tooling</li>
+            <li>Monitoring & observability</li>
+          </ul>
+          <a class="btn" href="#contact">Apply</a>
+        </div>
+      </div>
+    </div>
+  </section>-->
+
+  <!-- CONTACT -->
+  <!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="h2">Get in touch</h2>
+            <p class="lead">Fill the form or reach us directly.</p>
+        </div>
+        <div class="grid grid-2">
+            <div class="card" style="padding:18px;">
+                <form action="/send-email" method="POST">
+                    <div style="display:grid; gap:12px;">
+                        <div>
+                            <label for="name">Name</label>
+                            <input class="input" id="name" name="name" placeholder="Your full name" required />
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input class="input" id="email" name="email" type="email" placeholder="you@example.com" required />
+                        </div>
+                        <div>
+                            <label for="message">Message</label>
+                            <textarea class="input" id="message" name="message" rows="5" placeholder="How can we help?" required></textarea>
+                        </div>
+                        <button class="btn primary" type="submit">Send message</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card" style="padding:18px;">
+                <h3>Contact details</h3>
+                <p class="lead">Email: <a href="mailto:coild.mit@manipal.edu" style="color:var(--text)">coild.mit@manipal.edu</a></p>
+                <p class="lead">Address: COIL-D (MIT), Manipal Institute of Technology, Manipal<br>Udupi District, Karnataka, India 576104</p>
+                <!--<p class="lead">Twitter / X: <a href="#" style="color:var(--text)">@handle</a> · GitHub: <a href="#" style="color:var(--text)">@org</a></p>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div>© <span id="year"></span> Your Name / Organization. All rights reserved.</div>
+        <!--<div>Built with ❤ • <a href="#home" style="color:var(--muted)">Back to top ↑</a></div>-->
+    </div>
+</footer>
+
+<script>
+
+    // Active link highlighting on scroll
+    const sections = document.querySelectorAll('section, header.hero');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const onScroll = () => {
+      let current = 'home';
+      sections.forEach(sec => {
+        const top = window.scrollY + 90;
+        if (top >= sec.offsetTop && top < sec.offsetTop + sec.offsetHeight) {
+          current = sec.getAttribute('id') || 'home';
+        }
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    };
+    window.addEventListener('scroll', onScroll);
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinksEl = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const open = navLinksEl.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
