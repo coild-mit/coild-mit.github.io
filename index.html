@@ -19,7 +19,7 @@
       --brand-2: #FF4500;    /* secondary orange */
       --ring: rgba(255, 140, 0, .3);
       --border: rgba(0, 0, 0, 0.1);
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --shadow: 0 4px 12px rgba(12, 11, 11, 0.1);
       --radius: 18px;
       --radius-sm: 12px;
       --container: 1120px;
@@ -112,6 +112,24 @@
     .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .grid-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+.grid-3-2 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 in first row */
+  gap: 20px;
+  justify-content: center; /* centers the grid items */
+  max-width: 900px; /* optional: keeps it from stretching too wide */
+  margin: 0 auto; /* centers the whole grid in the page */
+}
+
+.grid-3-2 .grid-item:nth-child(n+4) {
+  grid-column: span 1;
+}
+
+.card.large {
+  width: 350px;
+}
+
     @media (max-width: 980px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 720px) { .grid-3, .grid-2, .grid-4 { grid-template-columns: 1fr; } }
 
@@ -255,6 +273,7 @@
     grid-template-columns: 1fr;
   }
 }
+
   </style>
 </head>
 <body>
@@ -295,19 +314,22 @@
     <div>
       <!--<span class="chip">Open Research • Industry Collaboration</span>-->
       <!--<h1>COIL-D</h1>
-      <h2>Centre of Indian Language Data</h2>-->
+      <h2>Centre for Indian Language Data</h2>-->
       
       <!-- Logo aligned left -->
       <div style="display: flex; align-items: center; justify-content: flex-start;"> <!--This to adjust coild logo position-->
         <div style="margin-right: 20px;">
-          <img src="/images/COIL-Dlogo-mit.png" alt="COIL-D Logo" style="width: 500px; height: auto;">
+          <img src="/images/logo-version1.png" alt="COIL-D Logo" style="width: 500px; height: auto;">
+          <br><br>
         </div>
       </div>
 
-      <p>
+
+      <!--<p style="text-align: justify; text-justify: inter-word;">-->
+      <p style="inter-word;">
         Fostering innovation in Human Language Technology by creating a unified repository of Indian language data.
         <br><br>
-        Under BHASHINI, Funded by Ministry of Electronics and Information Technology (MeitY), Govt. of India
+        Under BHASHINI, Funded by <b>Ministry of Electronics and Information Technology (MeitY)</b>, Govt. of India
       </p>
 
       <div class="cta-row">
@@ -325,66 +347,73 @@
       <div class="section-head">
         <!--<div class="eyebrow">About</div>-->
         <h2 class="h2">About Us</h2>
-        <!--<p class="lead">The Mission Bhashini, an initiative by the Ministry of Electronics and Information Technology (MeitY), Government of India, has recently recognized and funded the establishment of the "COIL-D: Centre of Indian Language Data." This esteemed project is being led by Prof. Asif Ekbal, Associate Professor at IIT Patna, in collaboration with IIT Delhi, IIIT Delhi, IIT Guwahati, IGDTUW, MIT Manipal, and DIBD. MIT is responsible for developing parallel corpora for Dravidian languages Kannada, Tamil, Malayalam, and Telugu.</p>-->
-        <p class="lead">
+        <!--<p class="lead">The Mission Bhashini, an initiative by the Ministry of Electronics and Information Technology (MeitY), Government of India, has recently recognized and funded the establishment of the "COIL-D: Centre for Indian Language Data." This esteemed project is being led by Prof. Asif Ekbal, Associate Professor at IIT Patna, in collaboration with IIT Delhi, IIIT Delhi, IIT Guwahati, IGDTUW, MIT Manipal, and DIBD. MIT is responsible for developing parallel corpora for Dravidian languages Kannada, Tamil, Malayalam, and Telugu.</p>-->
+        <p class="lead" style="text-align: justify; text-justify: inter-word;">
   <a href="https://coild-bhashini.github.io/" 
-     style="font-weight: bold; color: black; text-decoration: none; transition: all 0.3s ease;" 
-     onmouseover="this.style.color='blue'; this.style.textDecoration='underline';" 
+     target="_blank"
+     style="font-weight: bold; color: black; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center;"
+     onmouseover="this.style.color='blue'; this.style.textDecoration='underline';"
      onmouseout="this.style.color='black'; this.style.textDecoration='none';">
-    COIL-D: Centre of Indian Language Data
-  </a>   
-          is a funded project from the Ministry of Electronics and Information Technology (MeitY), Govt. of India. The project is to be executed in consortium mode led by IIT Patna. The other partnering institutions are IIT Delhi, IIIT Guwahati, IIIT Delhi, IGDTUW, Digital India Bhashini Division DIC and MIT Manipal. The project seeks to develop language resources for Human Language Technology (HLT) and establish applications, standards, guidelines, and best practices for building and benchmarking Machine Translation (MT) systems and other NLP tools. MIT is responsible for developing parallel corpora for Dravidian languages Kannada, Tamil, Malayalam, and Telugu.</p>
+    COIL-D: Centre for Indian Language Data
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         viewBox="0 0 24 24" 
+         fill="currentColor" 
+         style="width:16px; height:16px; margin-left:6px; transition: all 0.3s ease;">
+      <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h5V3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-5h-2v5H5V5z"/>
+    </svg>
+  </a>  
+          is a funded project from the <b>Ministry of Electronics and Information Technology (MeitY)</b>, Govt. of India. The project is to be executed in consortium mode led by IIT Patna. The other partnering institutions are IIT Delhi, IIIT Guwahati, IIIT Delhi, IGDTUW, Digital India Bhashini Division DIC and MIT Manipal. The project seeks to develop language resources for Human Language Technology (HLT) and establish applications, standards, guidelines, and best practices for building and benchmarking Machine Translation (MT) systems and other NLP tools. MIT is responsible for developing parallel corpora for Dravidian languages Kannada, Tamil, Malayalam, and Telugu.</p>
       </div>
       <div class="grid grid-4">
         <div class="card" style="padding:18px;">
           <h3>Aims</h3>
-          <ul class="list">
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
             Develop a suite of language resources, including parallel corpora for machine translation between Indian languages and benchmark datasets for key NLP tasks like Part-of-Speech (PoS) tagging, Named Entity Recognition (NER), Automatic Speech Recognition (ASR), and Text-to-Speech (TTS).
           </ul>
         </div>
         <div class="card" style="padding:20px;">
           <h3>Primary Focus</h3>
-          <ul class="list">
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
             50% domain-specific content from a mix of sectors: science, healthcare, agriculture, climate, tourism, and judiciary. 30% educational content, focusing on academic materials, textbooks, and learning resources. 20% conversational and governance content, including social media, dialogues, and official documents.
             
           </ul>
         </div>
         <div class="card" style="padding:18px;">
           <h3>Key Focus</h3>
-          <ul class="list">
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
             Standardize, preserve, and create language resources to support NLP research and applications.
           </ul>
         </div>
         <div class="card" style="padding:18px;">
           <h3>Applications</h3>
-          <ul class="list">
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
             This dataset will provide translation between Tamil and Kannada, Malayalam, Telugu and it will also enable the development of multilingual chatbots. This will facilitate more effective cross-sector communication.
           
           </ul>
         </div>
         <div class="card" style="padding:18px;">
           <h3>Intiative</h3>
-          <ul class="list">
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
             Establish a centralized repository for Indian language data and provide a platform for developing and benchmarking Human Language Technology (HLT) applications.
           
           </ul>
         </div>
         <div class="card" style="padding:18px;">
           <h3>Results</h3>
-          <ul class="list">
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
             To ensure rapid and efficient translation, the final output requires minimal post-editing, making it immediately suitable for publication on print and digital platforms.
       
           </ul>
         </div>
         <div class="card" style="padding:18px;">
           <h3>Development</h3>
-          <ul class="list">
-            Create comprehensive leaderboards to systematically evaluate the performance of models in key Natural Language Processing (NLP) tasks. These leaderboards will serve as benchmarks for assessing Machine Translation (MT), Part-of-Speech (PoS) tagging, Named Entity Recognition (NER), Natural Language Generation (NLG), sentiment analysis, Automatic Speech Recognition (ASR), and Text-to-Speech (TTS).
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
+            Create comprehensive leaderboards to systematically evaluate the performance of models in key Natural Language Processing (NLP) tasks. These leaderboards will serve as benchmarks for assessing machine translation (MT), Part-of-Speech (PoS) tagging, Named Entity Recognition (NER), Natural Language Generation (NLG), sentiment analysis, Automatic Speech Recognition (ASR), and Text-to-Speech (TTS).
     
         </div>
         <div class="card" style="padding:18px;">
           <h3>Delivery</h3>
-          <ul class="list">
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
             These advanced, no-cost tools offer a superior alternative to existing solutions like Google Translate, while simultaneously contributing to the preservation and growth of our linguistic heritage.
             
           </ul>
@@ -402,38 +431,45 @@
       <div class="section-head">
         <!--<div class="eyebrow">Objective</div>-->
         <h2 class="h2">Our Primary Objectives</h2>
-        <p class="lead">The COIL-D (Centre of Indian Language Data) project is building a single, comprehensive hub for Indian language data. Its main goals are to set up a standardized platform to evaluate machine translation and other natural language processing systems, encourage the development and preservation of language resources for human language technology applications, and define benchmarks for linguistic performance.</p>
+        <p class="lead" style="text-align: justify; text-justify: inter-word;">
+        The COIL-D (Centre for Indian Language Data) project is building a single, comprehensive hub for Indian language data. Its main goals are to set up a standardized platform to evaluate machine translation and other natural language processing systems, encourage the development and preservation of language resources for human language technology applications, and define benchmarks for linguistic performance.</p>
       </div>
       <div class="grid grid-2">
         <div class="card" style="padding:18px;">
+          <h3 style="text-align: justify; text-justify: inter-word;">
           <h3>Step 1: Identification of Tamil language resources</h3>
-          <ul class="list">
-           Identify and list existing Tamil datasets and tools to understand the current resource availability.</ul>
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
+           Identify and list existing Tamil datasets and tools to understand the current resource availability.</ul></h3>
         </div>
         <div class="card" style="padding:18px;">
+          <h3 style="text-align: justify; text-justify: inter-word;">          
           <h3> Step 2: Acquisition of resources across target domains </h3>
-           <ul class="list">
-          To ensure comprehensive coverage of real-world language usage, data will be collected from key domains, including Education, Governance & Policy, Judiciary, Science & Technology, Healthcare, Agriculture, Climate, and Tourism.</ul> 
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
+          To ensure comprehensive coverage of real-world language usage, data will be collected from key domains, including Education, Governance & Policy, Judiciary, Science & Technology, Healthcare, Agriculture, Climate, and Tourism.</ul></h3> 
         </div>
         <div class="card" style="padding:18px;">
+          <h3 style="text-align: justify; text-justify: inter-word;">          
           <h3> Step 3: Creation of language resources and benchmarks </h3>
-          <ul class="list">
-           Develop language resources and datasets for Machine Translation and NLP, and establish benchmarks to systematically evaluate tool performance.</ul> 
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
+           Develop language resources and datasets for Machine Translation and NLP, and establish benchmarks to systematically evaluate tool performance.</ul></h3>
           </div>
         <div class="card" style="padding:18px;">
+          <h3 style="text-align: justify; text-justify: inter-word;">
           <h3> Step 4: Development of MT evaluation leaderboards </h3>
-          <ul class="list">
-          Develop MT evaluation leaderboards to assess translation systems, enabling performance tracking and fostering continuous improvement. </ul>
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
+          Develop MT evaluation leaderboards to assess translation systems, enabling performance tracking and fostering continuous improvement. </ul></h3>
           </div>
         <div class="card" style="padding:18px;">
+          <h3 style="text-align: justify; text-justify: inter-word;">
           <h3> Step 5: Leaderboards for ASR and TTS technologies </h3>
-          <ul class="list">
-          Develop evaluation scoreboards for speech recognition and synthesis systems to measure accuracy, clarity, and overall performance. </ul> 
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
+          Develop evaluation scoreboards for speech recognition and synthesis systems to measure accuracy, clarity, and overall performance. </ul></h3> 
           </div>
         <div class="card" style="padding:18px;">
+          <h3 style="text-align: justify; text-justify: inter-word;">
           <h3> Step 6: Benchmarks for PoS and NER taggers </h3>
-          <ul class="list">
-          Define evaluation protocols for tools such as PoS and NER taggers to ensure fair and consistent assessment. </ul>
+          <ul class="list" style="text-align: justify; text-justify: inter-word; list-style-type: none; padding: 0; margin: 0;">
+          Define evaluation protocols for tools such as PoS and NER taggers to ensure fair and consistent assessment. </ul></h3>
           </div>
       </div>
     </div>
@@ -553,7 +589,8 @@
         <h2 class="h2">Leadership</h2>
         <!--<p class="lead">Showcase collaborators. Replace logos and links below.</p>-->
       </div>
-      <div class="grid grid-5">
+      <div class="grid grid-3">
+
         
         <!-- Member 1 -->
         <div class="card" style="padding:16px; text-align:center;">
@@ -580,8 +617,9 @@
             </a>
           </div>-->
         </div>
+
         <!---------------------------------------------------------------------->
-         <!-- Member 5 -->
+         <!-- Member 2 -->
         <div class="card" style="padding:16px; text-align:center;">
           <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/raghurama-holla/_jcr_content.html" target="_blank">
             <img src="/images/chandrakala.jpg" alt="Member Photo" 
@@ -611,7 +649,7 @@
         
 
 <!---------------------------------------------------------------------->
-         <!-- Member 2 -->
+         <!-- Member 3 -->
         <div class="card" style="padding:16px; text-align:center;">
           <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/raghurama-holla/_jcr_content.html" target="_blank">
             <img src="/images/radhika.jpg" alt="Member Photo" 
@@ -639,8 +677,9 @@
         </div>
 
         <!---------------------------------------------------------------------->
-         <!-- Member 3 -->
-        <div class="card" style="padding:16px; text-align:center;">
+         <!-- Member 4 -->
+        <div style="display:flex; justify-content:center; grid-column:1 / -1; gap:30px;">
+        <div class="card large" style="padding:16px; text-align:center;">
           <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/raghurama-holla/_jcr_content.html" target="_blank">
             <img src="/images/siddalingaswamy.jpg" alt="Member Photo" 
                  style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
@@ -667,8 +706,8 @@
         </div>
 
         <!---------------------------------------------------------------------->
-         <!-- Member 4 -->
-        <div class="card" style="padding:16px; text-align:center;">
+         <!-- Member 5 -->
+        <div class="card large" style="padding:16px; text-align:center;">
           <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/raghurama-holla/_jcr_content.html" target="_blank">
             <img src="/images/smitha.jpg" alt="Member Photo" 
                  style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
@@ -693,25 +732,11 @@
             </a>
           </div>-->
         </div>
+       </div>
       </div>
     </div>  
   </section>
 
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  
 
   <!-- Project Investigators -->
   <section id="Our Team">
@@ -730,6 +755,7 @@
                  style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
           </a>
           <h3 style="margin:8px 0 4px;">Dr. Muralikrishna SN</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Principal Investigator</p>
           <p style="margin:0; font-size:14px; color:#666;">Associate Professor</p>
           <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
           <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
@@ -758,6 +784,7 @@
                  style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
           </a>
           <h3 style="margin:8px 0 4px;">Dr. Ashalatha Nayak</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Co-Investigator</p>
           <p style="margin:0; font-size:14px; color:#666;">Professor</p>
           <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
           <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
@@ -786,6 +813,7 @@
                  style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
           </a>
           <h3 style="margin:8px 0 4px;">Dr. Ashwath Rao B</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Co-Investigator</p>
           <p style="margin:0; font-size:14px; color:#666;">Assistant Professor - Selection Grade</p>
           <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
           <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
@@ -814,6 +842,7 @@
                  style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
           </a>
           <h3 style="margin:8px 0 4px;">Dr. Raghavendra Ganiga</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Co-Investigator</p>
           <p style="margin:0; font-size:14px; color:#666;">Associate Professor</p>
           <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
           <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
@@ -842,6 +871,7 @@
                style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
           </a>
           <h3 style="margin:8px 0 4px;">Mr. Ganesh Babu C</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Co-Investigator</p>
           <p style="margin:0; font-size:14px; color:#666;">Assistant Professor Senior Scale</p>
           <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
           <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
@@ -869,6 +899,7 @@
                  style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
           </a>
           <h3 style="margin:8px 0 4px;">Dr. Raghurama Holla</h3>
+          <p style="margin:0; font-size:14px; color:#666;">Co-Investigator</p>
           <p style="margin:0; font-size:14px; color:#666;">Assistant Professor</p>
           <p style="margin:0; font-size:14px; color:#666;">School of Computer Engineering</p>
           <p style="margin:0; font-size:14px; color:#666;">MIT, MAHE Manipal, India</p>
@@ -915,7 +946,7 @@
           </a>
         </div>
         <h3>Mr. PVSS Harshavardhan</h3>
-        <p>Junior Research Associate</p>
+        <p>Junior Research Associate (Tech)</p>
       </div>
 
       <div class="staff">
@@ -1026,7 +1057,7 @@
       </div>
       <div class="card" style="padding:18px;">
         <ol class="list">
-          <li><strong>Your Name</strong>, Coauthors (2025). <em>Title of the Paper</em>. Conference/Journal. <a href="#">PDF</a> · <a href="#">Code</a> · <a href="#">Dataset</a></li>
+          <li><strong>Your Name</strong>, Coauthors (2025). <em>Title of the Paper</em>. ConOpen Posiference/Journal. <a href="#">PDF</a> · <a href="#">Code</a> · <a href="#">Dataset</a></li>
           <li>Author A, <strong>Your Name</strong> (2024). <em>Another Work</em>. Venue. <a href="#">PDF</a></li>
           <li>Your Group (2023). <em>Benchmarking Indic NER</em>. Venue. <a href="#">PDF</a></li>
         </ol>
@@ -1043,20 +1074,32 @@
         <!--<p class="lead">List internships, full‑time roles, and collaborations.</p>-->
       </div>
       <div class="grid grid-2">
-        <div class="card" style="padding:18px;">
-          <h3>Junior Research Associate (Language)</h3>
-          <p class="lead">Posts: 01 • Salary: Rs. 45,000/month (with 10% annual increment) • Duration: 2 Years</p>
-          <ul class="list">
-            <h Style="font-size: 20px;">Eligibility</h> 
-             <li>M.A in Tamil Linguistics or equivalent degree</li>
-             <li>Basic knowledge of Windows/Linux Operating Systems, Basic AI tools, MS Office</li>
-             <li>Multi-lingual skills are desirable</li>
-             <h Style="font-size: 20px;">Key responsibilities</h>
-             <li>Utilize annotation tools and software platforms commonly used in corpus development</li>
-             <li>Review and evaluate the quality of annotations, identifying and correcting errors or areas for improvement</li>
-             <li>Apply basic knowledge of markup languages, such as XML, and adhere to annotation standards</li>
+        <div class="card" style="padding:20px; color: rgba(6, 82, 4, 0.932);">
+          <h3 style="text-align: justify; text-justify: inter-word;">          
+          <h3>Freelance Translators</h3>
+          <p class="lead">We are looking for Freelance Translators proficient in Dravidian languages. The language pair for translation are:</p>
+      <ul class="list">
+            <li>  Tamil - Kannada</li>
+            <li>Tamil - Malayalam</li> 
+            <li>Tamil-Telugu</li>
           </ul>
-        <a class="btn primary" href="mailto:coild.mit@manipal.edu?subject=Application%20for%20Junior%20Research%20Associate%20(Tamil)%20-%20[Your%20Name]&body=Dear%20Sir/Madam,%0A%0AI%20am%20writing%20to%20apply%20for%20the%20position%20of%20Junior%20Research%20Associate%20in%20Tamil%20Linguistics.%0A%0A[Your%20message%20here...]%0A%0A**Please%20attach%20your%20resume%20to%20this%20email.**%0A%0ASincerely,%0A[Your%20Name]">Apply</a>        
+    
+        <p style="color: lch(64.58% 87.64 55.93 / 0.904);">Note that Tamil is the source language</p>
+            <h style="font-size: 18px; color: black;">Eligibility Criteria</h>         
+            <ul class="list">
+             <li>Proficiency in Tamil</li>
+             <li>Proficient in either Kannada, Malayalam or Telugu</li>
+             <li>Basic Computer Knowledge</li>
+             </ul>
+             <br>
+             <h Style="font-size: 20px; color: black;">Translation price: ₹ 1.5/source word</h>
+             <!--<li>Utilize annotation tools and software platforms commonly used in corpus development</li>
+             <li>Review and evaluate the quality of annotations, identifying and correcting errors or areas for improvement</li>
+             <li>Apply basic knowledge of markup languages, such as XML, and adhere to annotation standards</li>-->
+          </h3>
+          <div style="text-align: right;">
+        <a class="btn primary" href="mailto:coild.mit@manipal.edu?subject=Application%20for%20Junior%20Research%20Associate%20(Tamil)%20-%20[Your%20Name]&body=Dear%20Sir/Madam,%0A%0AI%20am%20writing%20to%20apply%20for%20the%20position%20of%20Junior%20Research%20Associate%20in%20Tamil%20Linguistics.%0A%0A[Your%20message%20here...]%0A%0A**Please%20attach%20your%20resume%20to%20this%20email.**%0A%0ASincerely,%0A[Your%20Name]">Apply now</a>        
+      </div>
       </div>
         <!--<div class="card" style="padding:18px;">
           <h3>Engineer — ML</h3>
