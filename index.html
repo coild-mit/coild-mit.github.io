@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Professional Portfolio — Your Name</title>
-  <meta name="description" content="Professional website with research objectives, motivation, corpora, leaderboard, consortium members, publications, career, Downloads and contact details." />
+  <meta name="description" content="Professional website with research objectives, motivation, corpora, leaderboard, consortium members, Tools, career, Downloads and contact details." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -42,6 +42,91 @@
     section { padding: 80px 0; }
     .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
 
+    /* Home Section Layout */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Left Content */
+.hero-content {
+    width: 100%;
+}
+
+/* Right Slideshow Box */
+/* Right Side Slideshow */
+.hero-slideshow {
+    width: 100%;
+    max-width: 550px;
+    margin-left: auto;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #f2f2f2;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+/* Slides */
+.mySlides {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.mySlides img,
+.mySlides video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* Slide Indicators */
+.slide-dots {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.dot {
+    height: 11px;
+    width: 11px;
+    margin: 0 5px;
+    display: inline-block;
+    background-color: #bbb;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background-color: #333;
+}
+/* Responsive */
+@media (max-width: 900px) {
+    .slideshow-container {
+        height: 280px;
+    }
+}
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-slideshow {
+        max-width: 100%;
+        margin: 20px auto;
+    }
+
+    .slideshow-container {
+        height: 280px;
+    }
+}
     /* Navbar */
     .nav {
       position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
@@ -266,7 +351,22 @@
   font-size: 14px;
   color: #444;
 }
+.video-card {
+    width: 60%;
+    max-width: 60%;
+    padding: 15px;
+    margin: auto;
+    box-sizing: border-box;
+}
 
+.video-card video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    display: block;
+    border-radius: 10px;
+}
 /* Responsive: 1 column on small screens */
 @media (max-width: 768px) {
   .staff-grid {
@@ -299,7 +399,7 @@
         <!--<a href="#corpora">Corpora</a>-->
         <a href="#Our Team">Our Team</a>
         <!--<a href="#Project Staff">Project Staff</a>-->
-        <a href="#publications">Publications</a>
+        <a href="#Tools">Tools</a>
         <a href="#career">Career</a>
         <a href="#Downloads">Downloads</a>
         <a href="#contact">Contact</a>
@@ -311,33 +411,90 @@
   <!-- HERO / HOME -->
 <header id="home" class="hero">
   <div class="container hero-grid">
-    <div>
-      <!--<span class="chip">Open Research • Industry Collaboration</span>-->
-      <!--<h1>COIL-D</h1>
-      <h2>Centre for Indian Language Data</h2>-->
-      
-      <!-- Logo aligned left -->
-      <div style="display: flex; align-items: center; justify-content: flex-start;"> <!--This to adjust coild logo position-->
+
+    <!-- LEFT SIDE: COIL-D Logo and Description -->
+    <div class="hero-content">
+
+      <div style="display: flex; align-items: center; justify-content: flex-start;">
         <div style="margin-right: 20px;">
-          <img src="/images/logo-version1.png" alt="COIL-D Logo" style="width: 500px; height: auto;">
+          <img src="/images/logo-version1.png"
+               alt="COIL-D Logo"
+               style="width: 500px; max-width: 100%; height: auto;">
           <br><br>
         </div>
-       </div>
+      </div>
 
-
-      <!--<p style="text-align: justify; text-justify: inter-word;">-->
       <p>
-        Fostering innovation in Human Language Technology by creating a unified repository of Indian language data.
+        Fostering innovation in Human Language Technology by creating a
+        unified repository of Indian language data.
         <br><br>
-        Under BHASHINI, Funded by <b>Ministry of Electronics and Information Technology (MeitY)</b>, Govt. of India
+        Under BHASHINI, Funded by
+        <b>Ministry of Electronics and Information Technology (MeitY)</b>,
+        Govt. of India
       </p>
 
       <div class="cta-row">
         <a class="btn primary" href="#contact">Get in touch</a>
-        <!--<a class="btn" href="#publications">View publications</a>-->
       </div>
+
     </div>
-    <!--<div class="card hero-card"></div>-->
+
+
+    <!-- RIGHT SIDE: PHOTO AND VIDEO SLIDESHOW -->
+    <!-- RIGHT SIDE: AUTOMATIC PHOTO AND VIDEO SLIDESHOW -->
+<div class="hero-slideshow">
+
+  <div class="slideshow-container">
+
+    <!-- Slide 3: Video -->
+    <!--<div class="mySlides">
+    <video controls muted playsinline preload="metadata">
+        <source src="/videos/coild-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    </div>-->
+
+    <!-- Slide 1: Image -->
+    <div class="mySlides">
+      <img src="/images/event1.jpg" alt="COIL-D Workshop">
+    </div>
+
+    <!-- Slide 2: Image -->
+    <div class="mySlides">
+      <img src="/images/event2.jpg" alt="COIL-D Event">
+    </div>
+
+    
+    <!-- Slide 3: Image -->
+    <div class="mySlides">
+      <img src="/images/event3.jpg" alt="COIL-D Activities">
+    </div>
+
+    <!-- Slide 4: Image -->
+    <div class="mySlides">
+      <img src="/images/event4.jpg" alt="COIL-D Activities">
+    </div>
+
+    <!-- Slide 5: Image -->
+    <div class="mySlides">
+      <img src="/images/event5.jpg" alt="COIL-D Activities">
+    </div>
+
+
+  </div>
+
+  <!-- Slide Indicators -->
+  <div class="slide-dots">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+
+  </div>
+
+</div>
+
   </div>
 </header>
 
@@ -423,6 +580,14 @@
         <!--As a data partner, your organization will be acknowledged on the MeitY portal for its valuable contributions to this important national project. Upon completion, due credit will be given for your support, highlighting your role in this significant initiative.-->
       </p>
     </div>
+
+    <div class="card video-card">
+    <video controls autoplay muted playsinline preload="auto">
+        <source src="/videos/coild-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
   </section>
 
   <!-- OBJECTIVE -->
@@ -706,8 +871,7 @@
         </div>
 
         <!---------------------------------------------------------------------->
-         <!-- Member 5 -->
-        <div class="card large" style="padding:16px; text-align:center;">
+         <div class="card large" style="padding:16px; text-align:center;">
           <a href="https://www.manipal.edu/mit/department-faculty/faculty-list/raghurama-holla/_jcr_content.html" target="_blank">
             <img src="/images/smitha.jpg" alt="Member Photo" 
                  style="width:100px; height:100px; border-radius:50%; object-fit:cover; margin-bottom:10px;">
@@ -736,6 +900,7 @@
       </div>
     </div>  
   </section>
+
 
 
   <!-- Project Investigators -->
@@ -1011,7 +1176,7 @@
 
       <div class="staff">
         <div class="staff-photo">
-          <img src="/images/raksha.jpg" alt="Staff 8">
+          <img src="/images/Raksha.jpg" alt="Staff 8">
           <a href="https://www.linkedin.com/in/raksha-shetty-4485a21b5/" target="_blank">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
                  alt="LinkedIn">
@@ -1020,7 +1185,6 @@
         <h3>Ms. Raksha</h3>
         <p>Junior Research Associate</p>
       </div>
-      
       <div class="staff">
         <div class="staff-photo">
           <img src="/images/umalatha.jpeg" alt="Staff 8">
@@ -1063,32 +1227,17 @@
 
        <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
                 <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Sakshi</span></p>
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Machine Translation models (IndicTrans2)</span></p>
-            </div>
-
-            <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Rajdeep</span></p>
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Machine Translation models (IndicTrans2)</span></p>
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Machine Translation Models (IndicTrans2)</span></p>
             </div>
         
         <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
                 <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Shrikanth Nayak</span></p>
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Web-based data acquisition system</span></p>
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Web-based Data Acquisition System</span></p>
             </div>
 
             <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
                 <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Shreesha</span></p>
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Web-based data acquisition system</span></p>
-            </div>
-
-            <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Prathiksha</span></p>
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Speaker Diarization</span></p>
-            </div>
-
-            <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Sameeksha</span></p>
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Speaker Diarization</span></p>
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Web-based Data Acquisition System</span></p>
             </div>
 
     </div>
@@ -1101,27 +1250,27 @@
         
         <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
                 <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Ranjan Shettigar</span></p>
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Speech acquisition and recognition</span></p>
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Speech Acquisition and Recognition</span></p>
             </div>
 
             <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
                 <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Bhavin kumar</span></p>
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Speech acquisition and recognition</span></p>
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Speech Acquisition and Recognition</span></p>
             </div>
 
             <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
                 <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Sathwik</span></p>
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">POS taggers for Dravidian languages</span></p>
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">POS taggers for Dravidian Languages</span></p>
             </div>
 
             <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
                 <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Prajwal</span></p>
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">POS taggers for Dravidian languages</span></p>
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">POS taggers for Dravidian Languages</span></p>
             </div>
 
             <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
                 <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Athreya</span></p>
-                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Speech annotation</span></p>
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Speech Annotation</span></p>
             </div>
 
            
@@ -1129,6 +1278,26 @@
             <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
                 <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Adithya Chawhan</span></p>
                 <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Speaker Diarization</span></p>
+            </div>
+
+            <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Rajdeep</span></p>
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Machine Translation Models (IndicTrans2)</span></p>
+            </div>
+
+            <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Prathiksha</span></p>
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Speaker Diarization</span></p>
+            </div>
+
+            <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Sameeksha</span></p>
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Speaker Diarization</span></p>
+            </div>
+
+            <div class="intern-entry" style="width: 280px; height: 130px; border: 1px solid #ccc; border-radius: 8px; padding: 15px; background-color: rgba(220, 220, 220, 0.2); box-sizing: border-box; overflow: hidden;">
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Name:</strong> <span style="color: black;">Bhargavi P</span></p>
+                <p style="margin: 5px 0;"><strong style="color: #e34c0d;">Project:</strong> <span style="color: black;">Coversational Speech Acquisition System</span></p>
             </div>
 
     </div>
@@ -1141,25 +1310,31 @@
     </div>
     
 </section>
+
+
+
   
         
-  <!-- PUBLICATIONS -->
-  <!--<section id="publications">
+  <!-- Tools -->
+  <section id="Tools">
     <div class="container">
       <div class="section-head">
-        <div class="eyebrow">Publications</div>
-        <h2 class="h2">Selected papers</h2>
-        <p class="lead">Replace with your actual citations (IEEE/ACM/ACL style).</p>
+        <div class="eyebrow">Tools</div>
+        <h2 class="h2">Dhravani</h2>
+        <p class="lead">Dhravani is a modern, web-based tool designed for Speech Data Acquisition to train/fine-tune Automatic Speech Recognition (ASR) models. Developed as part of the MeitY funded project "COIL-D: Centre for Indian Language Data", Dhravani facilitates Audio Recording, Trascription, Speaker Diarization, Virtual meets and cloud synchronization pipelines across multiple Indian Languages.</p>
       </div>
-      <div class="card" style="padding:18px;">
-        <ol class="list">
-          <li><strong>Your Name</strong>, Coauthors (2025). <em>Title of the Paper</em>. ConOpen Posiference/Journal. <a href="#">PDF</a> · <a href="#">Code</a> · <a href="#">Dataset</a></li>
-          <li>Author A, <strong>Your Name</strong> (2024). <em>Another Work</em>. Venue. <a href="#">PDF</a></li>
-          <li>Your Group (2023). <em>Benchmarking Indic NER</em>. Venue. <a href="#">PDF</a></li>
-        </ol>
-      </div>
+        <div class="card" style="padding:18px;">
+      <strong>Dhravani – Speech Data Acquisition Tool</strong>
+      <p>
+        <a href="https://dhravani.in/"
+           target="_blank"
+           rel="noopener noreferrer">
+          Visit Website →
+        </a>
+      </p>
     </div>
-  </section>-->
+    </div>
+  </section>
 
   <!-- CAREER -->
   <section id="career">
@@ -1415,5 +1590,144 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+<script>
+
+let slideIndex = 0;
+let slideTimer = null;
+let remainingTime = 2000; // 2 seconds
+let startTime = 0;
+let isHovered = false;
+
+const slideshow = document.querySelector(".slideshow-container");
+
+
+// Display slides
+function showSlides() {
+
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+
+    clearTimeout(slideTimer);
+    slideTimer = null;
+
+    // Hide all slides and stop videos
+    for (let i = 0; i < slides.length; i++) {
+
+        slides[i].style.display = "none";
+
+        let video = slides[i].querySelector("video");
+
+        if (video) {
+            video.pause();
+            video.currentTime = 0;
+        }
+    }
+
+    // Reset dots
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+    }
+
+    // Display current slide
+    slides[slideIndex].style.display = "block";
+
+    if (dots[slideIndex]) {
+        dots[slideIndex].classList.add("active");
+    }
+
+    // Every slide gets 2 seconds
+    remainingTime = 2000;
+
+    // Check whether current slide is a video
+    let currentVideo = slides[slideIndex].querySelector("video");
+
+    if (currentVideo) {
+
+        // Play video automatically
+        currentVideo.play().catch(error => {
+            console.log("Video autoplay:", error);
+        });
+
+    }
+
+    // Start automatic timer
+    if (!isHovered) {
+        startSlideTimer();
+    }
+}
+
+
+// Start timer
+function startSlideTimer() {
+
+    clearTimeout(slideTimer);
+
+    startTime = Date.now();
+
+    slideTimer = setTimeout(function() {
+        nextSlide();
+    }, remainingTime);
+
+}
+
+
+// Move to next slide
+function nextSlide() {
+
+    let slides = document.getElementsByClassName("mySlides");
+
+    slideIndex++;
+
+    if (slideIndex >= slides.length) {
+        slideIndex = 0;
+    }
+
+    showSlides();
+
+}
+
+
+// Pause slideshow when cursor enters
+slideshow.addEventListener("mouseenter", function() {
+
+    isHovered = true;
+
+    if (slideTimer !== null) {
+
+        clearTimeout(slideTimer);
+
+        let elapsedTime = Date.now() - startTime;
+
+        remainingTime = Math.max(0, remainingTime - elapsedTime);
+
+        slideTimer = null;
+    }
+
+});
+
+
+// Resume slideshow when cursor leaves
+slideshow.addEventListener("mouseleave", function() {
+
+    isHovered = false;
+
+    if (remainingTime <= 0) {
+
+        nextSlide();
+
+    } else {
+
+        startSlideTimer();
+
+    }
+
+});
+
+
+// Start slideshow automatically
+showSlides();
+
+</script>
 </body>
 </html>
